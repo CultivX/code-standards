@@ -46,6 +46,59 @@ Add these scripts to your `package.json`:
 }
 ```
 
+### VSCode Integration
+
+To integrate with VSCode, follow these steps:
+
+1. Install the VSCode extensions:
+   - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+   - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+
+2. Add the following settings to your VSCode settings.json:
+
+```json
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.experimental.useFlatConfig": true
+}
+```
+
+This configuration:
+- Uses Prettier as the default formatter (runs on save)
+- Runs ESLint fixes on save
+- Enables support for ESLint's flat config format
+
+## Known Issues
+
+### prettier-eslint Compatibility
+
+As of ESLint 9.x, some options used by `prettier-eslint` have been removed, which may cause errors like:
+
+```
+Invalid Options:
+- Unknown options: ignorePath, resolvePluginsRelativeTo, rulePaths, useEslintrc
+```
+
+**Workaround:**
+Use ESLint and Prettier separately instead of using `prettier-eslint`:
+
+1. Remove `prettier-eslint` from your dependencies
+2. Use separate commands for linting and formatting:
+   ```json
+   {
+     "scripts": {
+       "lint": "eslint .",
+       "lint:fix": "eslint . --fix",
+       "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+       "check": "pnpm format && pnpm lint:fix"
+     }
+   }
+   ```
+
 ## Features
 
 - TypeScript support
