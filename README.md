@@ -5,29 +5,31 @@ CultivX's shared ESLint and Prettier configuration for TypeScript and React proj
 ## Installation
 
 ```bash
-pnpm add https://github.com/cultivx/code-standards
+pnpm add @cultivx/code-standards
 ```
 
 ## Usage
 
+This package uses ES modules and requires Node.js environments that support ES modules.
+
 ### ESLint Configuration
 
-Create or update your `.eslintrc.js`:
+Create your `eslint.config.js` file in the root of your project:
 
 ```javascript
-const { eslintConfig } = require('@cultivx/code-standards');
+import { eslintConfig } from '@cultivx/code-standards';
 
-module.exports = eslintConfig;
+export default eslintConfig;
 ```
 
 ### Prettier Configuration
 
-Create or update your `.prettierrc.js`:
+Create your `.prettierrc.js` file in the root of your project:
 
 ```javascript
-const { prettierConfig } = require('@cultivx/code-standards');
+import { prettierConfig } from '@cultivx/code-standards';
 
-module.exports = prettierConfig;
+export default prettierConfig;
 ```
 
 ### Package.json Scripts
@@ -37,8 +39,8 @@ Add these scripts to your `package.json`:
 ```json
 {
   "scripts": {
-    "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
-    "lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\""
   }
 }
@@ -51,6 +53,7 @@ Add these scripts to your `package.json`:
 - Prettier integration
 - Modern JavaScript features
 - Consistent code style across CultivX projects
+- ESLint flat config format (ESLint 9.0.0+)
 
 ## Rules
 
