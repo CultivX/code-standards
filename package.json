@@ -23,7 +23,6 @@
     "@eslint/js": "latest",
     "@stylistic/eslint-plugin": "latest",
     "@stylistic/eslint-plugin-ts": "latest",
-    "@types/eslint__js": "latest",
     "@typescript-eslint/eslint-plugin": "latest",
     "@typescript-eslint/parser": "latest",
     "eslint": "latest",
@@ -31,6 +30,7 @@
   },
   "devDependencies": {
     "eslint-config-prettier": "latest",
+    "eslint-import-resolver-typescript": "^4.3.4",
     "eslint-plugin-prettier": "latest",
     "eslint-plugin-react": "latest",
     "eslint-plugin-react-hooks": "latest",
