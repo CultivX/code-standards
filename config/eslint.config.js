@@ -97,6 +97,25 @@ export default [
       // Prettier Rules
       "prettier/prettier": "error",
     },
+    settings: {
+      "import/resolver": {
+        typescript: {
+          alwaysTryTypes: true, // Recommended for TypeScript projects
+          // "project" is intentionally left out here to allow the consuming project's
+          // tsconfig.json to be discovered automatically by eslint-import-resolver-typescript
+        },
+        node: {
+          extensions: [".js", ".jsx", ".ts", ".tsx", ".mjs", ".cjs"],
+        },
+      },
+      "import/parsers": {
+        "@typescript-eslint/parser": [".ts", ".tsx"],
+      },
+      // Optional: if you use specific extensions beyond .js, .jsx, .ts, .tsx
+      // "import/extensions": [
+      //   ".ts", ".tsx", ".js", ".jsx"
+      // ],
+    },
   },
   // React configuration for tsx/jsx files
   {
