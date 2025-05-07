@@ -15,8 +15,6 @@ export default [
     languageOptions: {
       parser: tsParser,
       parserOptions: {
-        project: "tsconfig.json",
-        tsconfigRootDir: process.cwd(),
         sourceType: "module",
         ecmaVersion: "latest",
       },
