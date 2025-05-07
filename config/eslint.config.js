@@ -97,13 +97,6 @@ export default [
       // Prettier Rules
       "prettier/prettier": "error",
     },
-    settings: {
-      "import/resolver": {
-        "typescript": {
-          "project": "./tsconfig.json"
-        }
-      }
-    },
   },
   // React configuration for tsx/jsx files
   {
