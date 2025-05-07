@@ -21,7 +21,6 @@ export default [
         ecmaVersion: "latest",
       },
       globals: {
-        ...js.configs.recommended.languageOptions.globals,
         node: true,
         jest: true,
       },
