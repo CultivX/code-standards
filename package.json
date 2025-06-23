@@ -4,7 +4,6 @@
   "description": "CultivX code standards and linting configuration",
   "main": "index.js",
   "type": "module",
-  "packageManager": "pnpm@10.8.1",
   "files": [
     "config",
     "index.js"
@@ -30,7 +29,7 @@
   },
   "devDependencies": {
     "eslint-config-prettier": "latest",
-    "eslint-import-resolver-typescript": "^4.3.4",
+    "eslint-import-resolver-typescript": "^4.4.3",
     "eslint-plugin-prettier": "latest",
     "eslint-plugin-react": "latest",
     "eslint-plugin-react-hooks": "latest",
@@ -40,5 +39,8 @@
     "eslint": ">=9.0.0",
     "prettier": ">=3.0.0",
     "typescript": "^5.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   }
 }
