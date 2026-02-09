@@ -1,5 +1,5 @@
 import js from '@eslint/js';
-import * as stylisticTs from '@stylistic/eslint-plugin-ts';
+import stylistic from '@stylistic/eslint-plugin';
 import pluginTypescriptEslint from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 import pluginImport from 'eslint-plugin-import';
@@ -24,17 +24,17 @@ export default [
       },
     },
     plugins: {
-      '@stylistic/ts': stylisticTs,
+      '@stylistic': stylistic,
       import: pluginImport,
       prettier: pluginPrettier,
       '@typescript-eslint': pluginTypescriptEslint,
     },
     rules: {
       // TypeScript Rules
-      "@stylistic/ts/interface-name-prefix": "off",
-      "@stylistic/ts/explicit-function-return-type": "off",
-      "@stylistic/ts/explicit-module-boundary-types": "off",
-      "@stylistic/ts/no-explicit-any": "off",
+      "@stylistic/interface-name-prefix": "off",
+      "@stylistic/explicit-function-return-type": "off",
+      "@stylistic/explicit-module-boundary-types": "off",
+      "@stylistic/no-explicit-any": "off",
       "@typescript-eslint/no-unused-vars": [
         "error",
         {

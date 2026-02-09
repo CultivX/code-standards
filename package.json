@@ -1,6 +1,6 @@
 {
   "name": "@cultivx/code-standards",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "CultivX code standards and linting configuration",
   "main": "index.js",
   "type": "module",
@@ -18,26 +18,26 @@
   ],
   "author": "",
   "license": "ISC",
+  "peerDependencies": {
+    "eslint": "^9.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.0.0"
+  },
   "dependencies": {
-    "@eslint/js": "latest",
-    "@stylistic/eslint-plugin": "latest",
-    "@stylistic/eslint-plugin-ts": "latest",
-    "@typescript-eslint/eslint-plugin": "latest",
-    "@typescript-eslint/parser": "latest",
-    "eslint": "latest",
-    "eslint-plugin-import": "latest"
+    "@eslint/js": "^9.39.2",
+    "@stylistic/eslint-plugin": "^4.4.1",
+    "@typescript-eslint/eslint-plugin": "^8.55.0",
+    "@typescript-eslint/parser": "^8.55.0",
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^8.10.2",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0"
   },
   "devDependencies": {
-    "eslint-config-prettier": "latest",
-    "eslint-import-resolver-typescript": "^4.4.3",
-    "eslint-plugin-prettier": "latest",
-    "eslint-plugin-react": "latest",
-    "eslint-plugin-react-hooks": "latest",
-    "prettier": "latest"
-  },
-  "peerDependencies": {
-    "eslint": ">=9.0.0",
-    "prettier": ">=3.0.0",
-    "typescript": "^5.0.0"
+    "prettier": "^3.8.1"
   }
 }
