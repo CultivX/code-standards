@@ -2,9 +2,11 @@
 # registry supply-chain policy CI enforces, so local installs stay in sync).
 minimumReleaseAge: 1440
 
-# Dependencies explicitly approved to run install scripts. unrs-resolver's
-# postinstall just links the correct prebuilt native binary (shipped via its
-# optional deps); pnpm 10 blocks unapproved build scripts and fails CI without
-# this acknowledgement.
-onlyBuiltDependencies:
+# unrs-resolver (pulled in transitively by eslint-import-resolver-typescript)
+# ships a postinstall that links a prebuilt native binary. We deliberately do
+# NOT run it: this package only lints its own no-import fixtures, so the native
+# resolver binding is never invoked. Acknowledging it here keeps pnpm 10 from
+# failing the install with ERR_PNPM_IGNORED_BUILDS. Consumers approve the build
+# in their own projects as usual.
+ignoredBuiltDependencies:
   - unrs-resolver
