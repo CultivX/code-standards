@@ -1,1 +1,10 @@
+# Refuse dependency versions published less than a day ago (matches the
+# registry supply-chain policy CI enforces, so local installs stay in sync).
 minimumReleaseAge: 1440
+
+# Dependencies explicitly approved to run install scripts. unrs-resolver's
+# postinstall just links the correct prebuilt native binary (shipped via its
+# optional deps); pnpm 10 blocks unapproved build scripts and fails CI without
+# this acknowledgement.
+onlyBuiltDependencies:
+  - unrs-resolver
