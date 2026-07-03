@@ -1,0 +1,56 @@
+name: Upgrade Check
+
+# Proactively answers "if we upgraded every dependency to latest today, would
+# the shared config still work?" Runs weekly and on demand. A red run means the
+# ecosystem moved ahead of what our plugins support (e.g. ESLint 10 dropping the
+# APIs eslint-plugin-react still relies on) and an upgrade would break consumers.
+
+on:
+  schedule:
+    - cron: '0 6 * * 1' # Mondays 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  upgrade:
+    name: Test against latest dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - name: Bump every dependency to latest
+        run: pnpm update --latest
+
+      - name: Show resulting changes
+        run: git --no-pager diff -- package.json pnpm-lock.yaml || true
+
+      - name: Run tests against latest
+        run: pnpm test
+
+      - name: Summary
+        if: always()
+        run: |
+          {
+            echo '## Upgrade check'
+            echo
+            if [ "${{ job.status }}" = "success" ]; then
+              echo '✅ The config still passes with every dependency at latest.'
+              echo 'Safe to run `pnpm update --latest` and open an upgrade PR.'
+            else
+              echo '❌ Latest dependencies break the config — do not upgrade yet.'
+              echo 'See the diff and test output above for the offending package(s).'
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
