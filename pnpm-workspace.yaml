@@ -1,0 +1,3 @@
+# Refuse dependency versions published less than a day ago (matches the
+# registry supply-chain policy CI enforces, so local installs stay in sync).
+minimumReleaseAge: 1440
