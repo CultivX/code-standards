@@ -1,12 +1,3 @@
 # Refuse dependency versions published less than a day ago (matches the
 # registry supply-chain policy CI enforces, so local installs stay in sync).
 minimumReleaseAge: 1440
-
-# unrs-resolver (pulled in transitively by eslint-import-resolver-typescript)
-# ships a postinstall that links a prebuilt native binary. We deliberately do
-# NOT run it: this package only lints its own no-import fixtures, so the native
-# resolver binding is never invoked. Acknowledging it here keeps pnpm 10 from
-# failing the install with ERR_PNPM_IGNORED_BUILDS. Consumers approve the build
-# in their own projects as usual.
-ignoredBuiltDependencies:
-  - unrs-resolver
